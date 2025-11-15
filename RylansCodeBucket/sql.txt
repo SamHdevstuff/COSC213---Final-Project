@@ -1,0 +1,25 @@
+-- Behold, a temporary sql file!
+-- I hate SQL SERVER! https://www.sqlines.com/oracle-to-sql-server/to_char_datetime
+-- Anyway, here are the sql commands to run to set up some example entries and the database
+CREATE DATABASE IF NOT EXISTS scheduler;
+USE scheduler;
+
+CREATE TABLE IF NOT EXISTS Calendar_Events_TEMP (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(100) NOT NULL,
+  price DECIMAL(5,2) NOT NULL,
+  timeIN DATETIME NOT NULL,
+  timeOUT DATETIME NOT NULL,
+  Room INT NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO Calendar_Events_Temp VALUES(1, 'Lord Wernon Fatigue', 0.99, 4, '2025-12-31 14:30:00', '2025-12-31 17:30:00');
+
+INSERT INTO Calendar_Events_Temp VALUES(2, 'Boblin the Goblin', 60.25, 4, '2025-11-17 16:30:00', '2025-11-20 10:25:03');
+
+INSERT INTO Calendar_Events_Temp VALUES(3, 'Jane Doe', 20.16, 3, '2025-11-18 7:45:00', '2025-11-20 08:25:00');
+
+INSERT INTO Calendar_Events_Temp VALUES(4, 'Lord Wernon Fatigue', 10.99, 4, '2025-11-15 14:30:00', '2025-11-16 17:30:00');
+
+INSERT INTO Calendar_Events_Temp VALUES(5, 'Squilliam Tentacles', 80.99, 2, '2025-11-17 14:30:00', '2025-11-24 17:30:00');
