@@ -1,7 +1,11 @@
 <?php
 session_start();
 require __DIR__ . '/db.php';
-
+if (!isset($_SESSION['username'])) {
+    //header("Location: login.php");
+    //exit();
+    $_SESSION['username'] = 'guest';
+}
 $pdo = get_pdo();
 $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
 ?>
@@ -196,7 +200,7 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
 
 
 
-<h2>The Calendar in Table Form (Format this later):</h2>
+<h2>The Calendar in Table Form (Not Necessary, Delete this later):</h2>
 
 <?php if (!$basket): ?>
     <p>Your Calendar is empty.</p>
@@ -226,5 +230,12 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
         </tbody>
     </table>
 <?php endif; ?>
+
+<h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+<a href="login.php">| Login |</a>
+<a href="logout.php">| Logout |</a>
+<a href="createuser.php">| Create User |</a>
+<a href="schedule_stay.php">| Schedule Stay |</a>
+
 </body>
 </html>
