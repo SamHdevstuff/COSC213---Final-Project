@@ -197,45 +197,11 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
 
 
 
-
-
-
-<h2>The Calendar in Table Form (Not Necessary, Delete this later):</h2>
-
-<?php if (!$basket): ?>
-    <p>Your Calendar is empty.</p>
-<?php else: ?>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Check In</th>
-            <th>Check Out</th>
-            <th>Room</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($basket as $id => $row): ?>
-            <tr>
-                <td><?php echo (int)($row['id']); ?></td>
-                <td><?php echo ($row['Name']); ?></td>
-                <td>$<?php echo htmlspecialchars($row['price'], 2); ?></td>
-                <td><?php echo ($row['timeIN']); ?></td>
-                <td><?php echo ($row['timeOUT']); ?></td>
-                <td><?php echo number_format($row['Room']); ?></td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-<?php endif; ?>
-
 <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
 <a href="login.php">| Login |</a>
 <a href="logout.php">| Logout |</a>
 <a href="createuser.php">| Create User |</a>
 <a href="schedule_stay.php">| Schedule Stay |</a>
-
+<a href="admin-canceller.php">| (Admin Only) Cancel Appointments |</a>
 </body>
 </html>

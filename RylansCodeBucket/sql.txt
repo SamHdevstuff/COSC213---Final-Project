@@ -1,4 +1,4 @@
--- Behold, a temporary sql file!
+-- Behold, an sql file!
 -- I hate SQL SERVER! https://www.sqlines.com/oracle-to-sql-server/to_char_datetime
 --
 CREATE DATABASE IF NOT EXISTS scheduler;
@@ -39,6 +39,8 @@ INSERT INTO User_List VALUES('Boblin the Goblin', '1H43RTG0LD', 'JustAWittleGobl
 INSERT INTO User_List VALUES('Jane Doe', 'ZZZr&e4090', 'AmericanRat@gmail.com');
 
 INSERT INTO User_List VALUES('Squilliam Tentacles', 'HighArt&Culture', 'SquilliamTentacles@ProtonMail.bkbtm');
+
+INSERT INTO User_List VALUES('admin', '12345', NULL);
 
 --known bugs:
 --New entries are prevented from assuming the identities of deleted rows.
