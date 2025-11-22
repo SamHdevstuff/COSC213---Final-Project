@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </table>
 <?php endif; ?>
 
-<h2>Create User</h2>
+<h2>Cancel Bookings</h2>
 <?php if($error) echo "<p style='color:red;'>$error</p>"; ?>
 <form method="POST">
     Remove ID: <input type="number" name="eraseID" required><br><br>
