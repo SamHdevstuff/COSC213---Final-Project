@@ -11,6 +11,7 @@ if (!isset($_SESSION['username']) || ($_SESSION["username"]) == "guest") {
 
 $error = "";
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
@@ -58,6 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $valids = $pdo->prepare($request);
             $valids->execute([$_SESSION['username'], $bill, $room, $checkin, $checkout]);
         }
+        //send le confirmation email
+        $request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
+        $allez = $pdo->prepare($request);
+        $allez->execute([$_SESSION['username']]);
+        $to = $allez->fetchColumn(2); //gets the email
+        $subject = "Is this your booking?";
+        $txt = "A booking was made for " . $checkin . "to ". $checkout . " by " . $_SESSION['username'].
+                " for Room " . $room . " at [INSERT SERVICE NAME HERE GUYS]. If this isn't you, contact 
+                us to cancel it ASAP.";
+        $txt = wordwrap($txt, 70);
+       mail($to,$subject,$txt);
     }
 
 }
@@ -65,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create User</title>
+    <title>Schedule Stay</title>
 </head>
 <body>
-<h2>Create User</h2>
+<h2>Schedule a Stay</h2>
 <?php if($error) echo "<p style='color:red;'>$error</p>"; ?>
 <form method="POST">
     Check-In Time: <input type="datetime-local" name="checkin" required><br><br>
