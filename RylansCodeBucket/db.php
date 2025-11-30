@@ -48,7 +48,8 @@ function get_pdo(): PDO {
     return new PDO($dsn, DB_USER, DB_PASS, $opts);
 }
 //Jumpstarter - RUN PHP file
-/*  if ($conn->multi_query($sql_content)) {
+/*  $sql_content = file_get_contents($sql_file);
+if ($conn->multi_query($sql_content)) {
     echo "SQL file executed successfully.";
 } else {
     echo "Error executing SQL file: " . $conn->error;
