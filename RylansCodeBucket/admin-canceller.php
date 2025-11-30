@@ -4,20 +4,48 @@
 session_start();
 require __DIR__ . '/db.php';
 $pdo = get_pdo();
-if (!isset($_SESSION['username']) || ($_SESSION["username"]) != "admin") {
+// || ($_SESSION["username"]) != "admin"
+if (!isset($_SESSION['username']) || $_SESSION['username'] == 'guest') {
     header("Location: login.php");
     exit();
 }
+//sets basket to display all values if admin, else only the ones that match username and are more
+//than 1 day from now.
+if ($_SESSION['username'] != "admin") {
+    $name = $_SESSION['username'];
+//
+    $request = "SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP WHERE Name = ? AND CURRENT_TIMESTAMP()+1 <= timeIN ORDER BY id;";
+    $valids = $pdo->prepare($request);
+    $valids->execute([$name]);
+    $basket = $valids;
+    $error = "Note: You can only modify your own bookings up to one day beforehand!";
+} else {
+    $request = "SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id";
 $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
 $error = "";
-
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $erase = $_POST['eraseID'];
+    if ($_SESSION['username'] == 'admin') {
+        $erase = $_POST['eraseID'];
 
-    $request = "DELETE from scheduler.calendar_events_temp WHERE ? = id;";
-    $valids = $pdo->prepare($request);
-    $valids->execute([$erase]);
-    $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
+        $request = "DELETE from scheduler.calendar_events_temp WHERE ? = id;";
+        $valids = $pdo->prepare($request);
+        $valids->execute([$erase]);
+        $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
+
+    } else {
+        $erase = $_POST['eraseID'];
+
+        $request = "DELETE from scheduler.calendar_events_temp WHERE ? = id AND name = ? AND CURRENT_TIMESTAMP()+1 <= timeIN ORDER BY id;";
+        $valids = $pdo->prepare($request);
+        $valids->execute([$erase, $name]);
+//
+        $request = "SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP WHERE Name = ? AND CURRENT_TIMESTAMP()+1 <= timeIN ORDER BY id;";
+        $valids = $pdo->prepare($request);
+        $valids->execute([$name]);
+        $basket = $valids;
+        $error = "Note: You can only modify your own bookings up to one day beforehand!";
+    }
 }
 ?>
 <!DOCTYPE html>

@@ -202,6 +202,6 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
 <a href="logout.php">| Logout |</a>
 <a href="createuser.php">| Create User |</a>
 <a href="schedule_stay.php">| Schedule Stay |</a>
-<a href="admin-canceller.php">| (Admin Only) Cancel Bookings |</a>
+<a href="admin-canceller.php">| Cancel Bookings |</a>
 </body>
 </html>
