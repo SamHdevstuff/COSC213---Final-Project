@@ -1,7 +1,8 @@
 <?php
 // db.php
 // Central MySQL connection using mysqli with error handling & UTF-8 charset
-
+//JUMPSTARTER
+//$sql_file = "/sql.txt";
 const DB_HOST = '127.0.0.1';
 const DB_USER = 'root';      // change if needed
 const DB_PASS = '';          // change if needed
@@ -46,3 +47,13 @@ function get_pdo(): PDO {
     ];
     return new PDO($dsn, DB_USER, DB_PASS, $opts);
 }
+//Jumpstarter - RUN PHP file
+/*  if ($conn->multi_query($sql_content)) {
+    echo "SQL file executed successfully.";
+} else {
+    echo "Error executing SQL file: " . $conn->error;
+}
+ *
+ *
+ *
+ */
