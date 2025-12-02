@@ -6,6 +6,7 @@ if (!isset($_SESSION['username'])) {
     //exit();
     $_SESSION['username'] = 'guest';
 }
+
 $pdo = get_pdo();
 $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
 ?>
@@ -24,8 +25,9 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
     </style>
 </head>
 <body>
-
-<h1>This Week's Schedule:</h1>
+<h1>Welcome to [INSERT HOTEL/SERVICE NAME HERE]</h1>
+<p>We have five different luxurious rooms for you to choose from, numbered 1 to 5</p>
+<h2>This Week's Schedule:</h2>
 
 <?php if (!$basket): ?>
     <p>Your Calendar is empty.</p>
