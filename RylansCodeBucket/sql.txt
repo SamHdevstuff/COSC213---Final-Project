@@ -25,7 +25,7 @@ INSERT INTO Calendar_Events_Temp VALUES(4, 'Lord Wernon Fatigue', 10.99, 4, '202
 INSERT INTO Calendar_Events_Temp VALUES(5, 'Squilliam Tentacles', 80.99, 2, '2025-11-17 14:30:00', '2025-11-24 17:30:00');
 
 CREATE TABLE IF NOT EXISTS User_List (
-  User_Name VARCHAR(100) NOT NULL,
+  User_Name VARCHAR(100) NOT NULL UNIQUE,
   Password VARCHAR(20) NOT NULL,
   Email VARCHAR(40),
   PRIMARY KEY (User_Name)
@@ -45,3 +45,10 @@ INSERT INTO User_List VALUES('admin', '12345', NULL);
 --known bugs:
 --New entries are prevented from assuming the identities of deleted rows.
 --code's haunted, i guess.
+--I forgor to add a unique constraint to user_name: ALTER TABLE user_list
+ADD CONSTRAINT UC_USER_NAME UNIQUE (User_Name);
+--Add Foreign Key to calendar_events_temp
+ALTER TABLE calendar_events_temp ADD CONSTRAINT calendar_events_temp_user_list_NAME_FK_C FOREIGN KEY (Name) REFERENCES user_list(user_name);
+
+--Bonus user for testing for email func:
+INSERT INTO User_List VALUES('Ryguy642', 'F0X3SrC%L', 'rkbrennan369@gmail.com');

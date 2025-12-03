@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                  echo "Your checkout time of " . $checkout . " is before your check-in time ".  $checkin;
         } else {
             //calculate price
-            $bill = ((strtotime($checkout) - strtotime($checkin)) / (60 * 60)) * (10.08/24) ;
+            $bill = ((strtotime($checkout) - strtotime($checkin)) / (60 * 60)) * (10.08/24) ; //Rate: 10.08 Per 24 Hours
             //echo $bill;
 
             $request = "INSERT INTO scheduler.calendar_events_temp VALUES (DEFAULT, ?, ?, ?, ?, ?);";
@@ -60,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $valids->execute([$_SESSION['username'], $bill, $room, $checkin, $checkout]);
         }
         //send le confirmation email
-        $request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
+        //ini_set();
+        /*$request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
         $allez = $pdo->prepare($request);
         $allez->execute([$_SESSION['username']]);
         $to = $allez->fetchColumn(2); //gets the email
@@ -69,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 " for Room " . $room . " at [INSERT SERVICE NAME HERE GUYS]. If this isn't you, contact 
                 us to cancel it ASAP.";
         $txt = wordwrap($txt, 70);
-       mail($to,$subject,$txt);
+       mail($to,$subject,$txt);*/
     }
 
 }
