@@ -9,7 +9,6 @@ if (!isset($_SESSION['username'])) {
 
 $pdo = get_pdo();
 $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
-echo phpversion();
 ?>
 <!DOCTYPE html>
 <html>
