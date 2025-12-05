@@ -5,9 +5,6 @@ session_start();
 require __DIR__ . '/db.php';
 $pdo = get_pdo();
 // credentials
-$admin_username = "admin";
-$admin_password = "12345";
-
 
 $error = "";
 
@@ -19,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $valids->execute([$username, $password]);
     //If the line exists (I.E. username and password match) There should be one (or more :( ) lines in rowcount
     $exists = $valids->rowCount();
-    if (($username === $admin_username && $password === $admin_password) || $exists > 0) {
+    if ($exists > 0) {
         $_SESSION['username'] = $username; // Store username in session
         header("Location: view_calendar.php");
        exit();
