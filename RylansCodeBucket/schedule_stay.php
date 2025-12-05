@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Set the hostname of the mail server
         ini_set('SMTP','smtp.gmail.com');
         ini_set('smtp_port', '587');
-        ini_set('sendmail_from','info@gmail.com');
+        ini_set('sendmail_from','rkbrennan369@gmail.com');
 
         $request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
         $allez = $pdo->prepare($request);
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <form method="POST">
     Check-In Time: <input type="datetime-local" name="checkin" required><br><br>
     Check-Out Time: <input type="datetime-local" name="checkout" required><br><br>
-    Room (Between 1 and 5): <input type="number" name="roomnum" min = "1" max="5"><br><br>
+    Room (Between 1 and <?php echo $_SESSION['max']?>): <input type="number" name="roomnum" min = "1" max="<?php echo $_SESSION['max']?>"><br><br>
     <button type="submit">Validate</button>
 
 

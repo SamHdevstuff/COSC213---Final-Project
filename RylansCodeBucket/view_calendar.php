@@ -5,8 +5,11 @@ if (!isset($_SESSION['username'])) {
     //header("Location: login.php");
     //exit();
     $_SESSION['username'] = 'guest';
-}
 
+}
+//SET max rooms/services here
+$_SESSION['max'] = 5;
+//
 $pdo = get_pdo();
 $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id")->fetchAll();
 ?>
@@ -25,9 +28,9 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
     </style>
 </head>
 <body>
-<h1>Welcome to [INSERT HOTEL/SERVICE NAME HERE]</h1>
-<p>We have five different luxurious rooms for you to choose from, numbered 1 to 5</p>
-<h2>This Week's Schedule:</h2>
+<h1>Welcome to [INSERT SERVICE NAME HERE]</h1>
+<p>We have five different luxurious rooms for you to choose from, numbered 1 to <?php echo $_SESSION['max'] ?></p>
+<h2>Schedule for the next two weeks:</h2>
 
 <?php if (!$basket): ?>
     <p>Your Calendar is empty.</p>
@@ -38,7 +41,7 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
     <table>
         <thead>
         <tr>
-            <th>Monday</th>
+            <th>This Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
             <th>Thursday</th>
@@ -108,27 +111,27 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
                     ?> </td>
             </tr>
         <?php endforeach; ?>
-        </tbody>
-    </table>
+
+
 <!--Anotha one -->
 <?php
-    $weekrep = $pdo->query("SELECT Room, timeIN, timeOUT, HOUR(timeIN) AS INHOUR, MINUTE(timeIN) AS INMIN, HOUR(timeOUT) AS OUTHOUR, MINUTE(timeOUT) AS OUTMIN FROM scheduler.CALENDAR_EVENTS_TEMP WHERE WEEK(CURRENT_DATE(), 1)=WEEK(timeIN, 1)-1 OR WEEK(CURRENT_DATE(), 1)=WEEK(timeOUT, 1)-1 ORDER BY timeIN;")->fetchAll();
-    $thisweek = $pdo->query("SELECT WEEK(NOW(), 1) AS cw FROM scheduler.CALENDAR_EVENTS_TEMP;")->fetchAll();
+    $nextweekrep = $pdo->query("SELECT Room, timeIN, timeOUT, HOUR(timeIN) AS INHOUR, MINUTE(timeIN) AS INMIN, HOUR(timeOUT) AS OUTHOUR, MINUTE(timeOUT) AS OUTMIN FROM scheduler.CALENDAR_EVENTS_TEMP WHERE WEEK(CURRENT_DATE(), 1)=WEEK(timeIN, 1)-1 OR WEEK(CURRENT_DATE(), 1)=WEEK(timeOUT, 1)-1 ORDER BY timeIN;")->fetchAll();
+
     ?>
-    <table>
+
         <thead>
         <tr>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
+            <th>Next Monday</th>
+            <th>Next Tuesday</th>
+            <th>Next Wednesday</th>
+            <th>Next Thursday</th>
+            <th>Next Friday</th>
+            <th>Next Saturday</th>
+            <th>Next Sunday</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($weekrep as $id => $row): ?>
+        <?php foreach ($nextweekrep as $id => $row): ?>
             <tr>
                 <td><?php
                     if(date('w', strtotime($row['timeIN'])) == '1' && date('W', strtotime($row['timeIN'])) == date('W')+1) {
