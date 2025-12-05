@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sum = 0;
     //validate check-in time with room
-    $request = "SELECT * from scheduler.CALENDER_EVENTS_TEMP WHERE ? = Room AND timeIN <= ? AND timeOUT >= ?;";
+    $request = "SELECT * from scheduler.calendar_events_temp WHERE ? = Room AND timeIN <= ? AND timeOUT >= ?;";
     $valids = $pdo->prepare($request);
     $valids->execute([$room, $checkin, $checkin]);
     $exists = $valids->rowCount();
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sum += $exists;
     //validate check-out time with room
     $exists = 0;
-    $request = "SELECT * from scheduler.CALENDAR_EVENTS_TEMP WHERE ? = Room AND timeIN <= ? AND timeOUT >= ?;";
+    $request = "SELECT * from scheduler.calendar_events_temp WHERE ? = Room AND timeIN <= ? AND timeOUT >= ?;";
     $valids = $pdo->prepare($request);
     $valids->execute([$room, $checkout, $checkout]);
     $exists = $valids->rowCount();
@@ -55,22 +55,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $bill = ((strtotime($checkout) - strtotime($checkin)) / (60 * 60)) * (10.08/24) ; //Rate: 10.08 Per 24 Hours
             //echo $bill;
 
-            $request = "INSERT INTO scheduler.CALENDAR_EVENTS_TEMP VALUES (DEFAULT, ?, ?, ?, ?, ?);";
+            $request = "INSERT INTO scheduler.calendar_events_temp VALUES (DEFAULT, ?, ?, ?, ?, ?);";
             $valids = $pdo->prepare($request);
             $valids->execute([$_SESSION['username'], $bill, $room, $checkin, $checkout]);
         }
         //send le confirmation email
         //ini_set();
-        /*$request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
+        //Set the hostname of the mail server
+        ini_set('SMTP','smtp.gmail.com');
+        ini_set('smtp_port', '587');
+        ini_set('sendmail_from','info@gmail.com');
+
+        $request = "SELECT * from scheduler.user_list WHERE USER_NAME = ?;";
         $allez = $pdo->prepare($request);
         $allez->execute([$_SESSION['username']]);
         $to = $allez->fetchColumn(2); //gets the email
+        if($to == null) {
+            $to = "rkbrennan369@gmail.com";
+        }
         $subject = "Is this your booking?";
         $txt = "A booking was made for " . $checkin . "to ". $checkout . " by " . $_SESSION['username'].
                 " for Room " . $room . " at [INSERT SERVICE NAME HERE GUYS]. If this isn't you, contact 
                 us to cancel it ASAP.";
         $txt = wordwrap($txt, 70);
-       mail($to,$subject,$txt);*/
+       mail($to,$subject,$txt);
+
     }
 
 }
