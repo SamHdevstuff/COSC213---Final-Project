@@ -29,7 +29,7 @@ $basket = $pdo->query("SELECT * FROM scheduler.CALENDAR_EVENTS_TEMP ORDER BY id"
 </head>
 <body>
 <h1>Welcome to [INSERT SERVICE NAME HERE]</h1>
-<p>We have five different luxurious rooms for you to choose from, numbered 1 to <?php echo $_SESSION['max'] ?></p>
+<p>We have several different luxurious rooms for you to choose from, numbered 1 to <?php echo $_SESSION['max'] ?></p>
 <h2>Schedule for the next two weeks:</h2>
 
 <?php if (!$basket): ?>
