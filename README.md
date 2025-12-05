@@ -21,10 +21,13 @@ Advanced Features (Choose at least two for an 'A' grade):
 
 User Accounts: Allow users to register and log in to view their own booking history and manage their upcoming appointments.
 
-Multiple Resources/Staff: Extend the system to handle bookings for multiple resources or staff members (e.g., different tutors, different rooms), each with their own unique schedule.
-
-Recurring Bookings: Allow users or admins to create recurring appointments (e.g., weekly).
-
-Automated Email Reminders: Implement a system to send an automated reminder email to the user 24 hours before their scheduled appointment.
-
 User-Managed Cancellations: Allow logged-in users to cancel their own appointments up to a certain time before the appointment.
+
+Project Title: [INSERT HOTEL/SERVICE NAME HERE]
+By: Rylan, Connor and Samuel
+Description: Our project is a hotel/booking service site. The purpose of it is to have users log in and be able to schedule any of the 5 rooms between a specific time. Guests and users are able to view the calender and the admin has the ability to remove any listing at any time. Users also have the ability to cancel their booking up to 24 hours before their appointment. Guests do not have permission to access the schedule_stay and cancel_booking sessions and will be redirected back to the login screen. Any of these types of users are able to create a new account that will be given the same permissions as a regular user account.
+
+Development Environment Instructions: Download all php files and start at the login page. sql.txt has the tables that need to be imported. 
+
+Login: Admin
+Password: 12345
