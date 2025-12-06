@@ -1,0 +1,239 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FFF8F0; /* Cream color */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Container for centering content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: #8B4513; /* SaddleBrown */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #E6D5B8;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+/* Forms */
+form {
+    background-color: #FFFEF9;
+    padding: 25px;
+    border-radius: 15px; /* Rounded edges */
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+    margin: 20px 0;
+    border: 1px solid #E6D5B8;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px 0;
+    border: 2px solid #E6D5B8;
+    border-radius: 10px; /* Rounded edges */
+    background-color: #FFFEF9;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="datetime-local"]:focus {
+    outline: none;
+    border-color: #8B4513;
+}
+
+/* Buttons */
+button, .btn {
+    background-color: #8B4513; /* SaddleBrown */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px; /* Rounded edges */
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+button:hover, .btn:hover {
+    background-color: #A0522D; /* Sienna */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(139, 69, 19, 0.2);
+}
+
+/* Tables */
+table {
+    background-color: #FFFEF9;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 15px; /* Rounded edges */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+    border: 1px solid #E6D5B8;
+}
+
+th {
+    background-color: #F5EBD8;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #8B4513;
+    border-bottom: 2px solid #E6D5B8;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #E6D5B8;
+    background-color: #FFFEF9;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: #F9F5EF;
+}
+
+/* Links */
+a {
+    color: #8B4513;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+a:hover {
+    color: #A0522D;
+    background-color: #F9F5EF;
+}
+
+/* Navigation */
+.nav-links {
+    background-color: #FFFEF9;
+    padding: 15px;
+    border-radius: 15px; /* Rounded edges */
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
+    border: 1px solid #E6D5B8;
+}
+
+.nav-links a {
+    padding: 8px 15px;
+    background-color: #F5EBD8;
+    border-radius: 20px; /* Rounded edges */
+}
+
+.nav-links a:hover {
+    background-color: #8B4513;
+    color: white;
+}
+
+/* Messages */
+.success-message {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 5px solid #4CAF50;
+}
+
+.error-message {
+    background-color: #FFEBEE;
+    color: #C62828;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 5px solid #F44336;
+}
+
+/* Cards */
+.card {
+    background-color: #FFFEF9;
+    padding: 20px;
+    border-radius: 15px; /* Rounded edges */
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+    border: 1px solid #E6D5B8;
+}
+
+/* Room display */
+.room-display, .price-display {
+    background-color: #F5EBD8;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 2px dashed #E6D5B8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: #8B4513;
+    font-size: 0.9rem;
+    border-top: 1px solid #E6D5B8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+    }
+    
+    form {
+        padding: 15px;
+    }
+}

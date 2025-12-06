@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             priceDisplay.textContent = "You will be charged: $" + price.toFixed(2);
         }
     </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h2>Schedule a Stay</h2>

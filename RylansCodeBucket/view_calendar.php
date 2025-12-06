@@ -85,7 +85,7 @@ $nextweekrep = $pdo->query("
             height: 80px;
         }
     </style>
-
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
