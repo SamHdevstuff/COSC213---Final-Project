@@ -31,3 +31,21 @@ Development Environment Instructions: Download all php files and start at the lo
 
 Login: Admin
 Password: 12345
+
+We also have many test accounts but you can easily make a new user.
+If you would like to test any of them:
+
+Login: Ctwhite
+Password: 12345
+
+Login: Alice Johnson
+Password: 12345
+
+Login: Bob Smith
+Password: 12345
+
+Login: Jane Doe
+Password: 54321
+
+Login: David Lee
+Password: 54321

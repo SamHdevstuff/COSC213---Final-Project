@@ -14,41 +14,42 @@ CREATE TABLE IF NOT EXISTS Calendar_Events_TEMP (
   PRIMARY KEY (id)
 );
 
-INSERT INTO Calendar_Events_Temp VALUES(1, 'Lord Wernon Fatigue', 0.99, 4, '2025-12-31 14:30:00', '2025-12-31 17:30:00');
+INSERT INTO Calendar_Events_Temp VALUES(
+    1, 'Alice Johnson', 61.74, '2025-12-01 14:30:00', '2025-12-07 17:30:00', 4);
 
-INSERT INTO Calendar_Events_Temp VALUES(2, 'Boblin the Goblin', 60.25, 4, '2025-11-17 16:30:00', '2025-11-20 10:25:03');
+INSERT INTO Calendar_Events_Temp VALUES(
+    2, 'Bob Smith', 27.72, '2025-12-05 16:30:00', '2025-12-08 10:25:00', 1);
 
-INSERT INTO Calendar_Events_Temp VALUES(3, 'Jane Doe', 20.16, 3, '2025-11-18 7:45:00', '2025-11-20 08:25:00');
+INSERT INTO Calendar_Events_Temp VALUES(
+    3, 'Jane Doe', 30.51, '2025-12-09 07:45:00', '2025-12-12 08:25:00', 5);
 
-INSERT INTO Calendar_Events_Temp VALUES(4, 'Lord Wernon Fatigue', 10.99, 4, '2025-11-15 14:30:00', '2025-11-16 17:30:00');
+INSERT INTO Calendar_Events_Temp VALUES(
+    4, 'David Lee', 11.34, '2025-12-09 14:30:00', '2025-12-10 17:30:00', 1);
 
-INSERT INTO Calendar_Events_Temp VALUES(5, 'Squilliam Tentacles', 80.99, 2, '2025-11-17 14:30:00', '2025-11-24 17:30:00');
+INSERT INTO Calendar_Events_Temp VALUES(
+    5, 'ctwhite', 21.42, '2025-12-11 14:30:00', '2025-12-13 17:30:00', 2);
+
 
 CREATE TABLE IF NOT EXISTS User_List (
   User_Name VARCHAR(100) NOT NULL UNIQUE,
-  Password VARCHAR(20) NOT NULL,
+  Password VARCHAR(255) NOT NULL,
   Email VARCHAR(40),
   PRIMARY KEY (User_Name)
 );
--- Note: User_Name should be identical to the Name in the calendar. 
+-- Note: User_Name should be identical to the Name in the calendar.
 
-INSERT INTO User_List VALUES('Lord Wernon Fatigue', '12345', 'WFatigue@arcanum.net');
+INSERT INTO User_List VALUES('ctwhite', '$2y$10$jl5S5YO8U0QYHNUvE5Nc5eZiYQVBpEhHGjD.r8xNmUsLQwMybBVCu', 'connortwhite99@gmail.com');
 
-INSERT INTO User_List VALUES('Boblin the Goblin', '1H43RTG0LD', 'JustAWittleGoblin@gmail.com');
+INSERT INTO User_List VALUES('Alice Johnson', '$2y$10$FoRthv11IYqm8IIeL3CyJeHf8F71qC92eBlB7QERk9/69uqW.Ot8y', 'alicejohnson@gmail.com');
 
-INSERT INTO User_List VALUES('Jane Doe', 'ZZZr&e4090', 'AmericanRat@gmail.com');
+INSERT INTO User_List VALUES('Bob Smith', '$2y$10$9BQ25XEMsdQ6BQITfX0IVOgsVOI1p2lu6rLpEjxW3N6T9S/Fze4uS', 'bobsmith@gmail.com');
 
-INSERT INTO User_List VALUES('Squilliam Tentacles', 'HighArt&Culture', 'SquilliamTentacles@ProtonMail.bkbtm');
+INSERT INTO User_List VALUES('Jane Doe', '$2y$10$KD4vPTklOkx4jafS9d3OUu/bzcJMOEDEf7r1XSkGGvD4ES3R/kOqq', NULL);
 
-INSERT INTO User_List VALUES('admin', '12345', NULL);
+INSERT INTO User_List VALUES('David Lee', '$2y$10$gGoIAF1nOg2ownoHdJpxROODzA633v4Uroj1GP2bAMsu15qanAiHG', NULL);
 
---known bugs:
---New entries are prevented from assuming the identities of deleted rows.
---code's haunted, i guess.
---I forgor to add a unique constraint to user_name: ALTER TABLE user_list
-ADD CONSTRAINT UC_USER_NAME UNIQUE (User_Name);
---Add Foreign Key to calendar_events_temp
-ALTER TABLE calendar_events_temp ADD CONSTRAINT calendar_events_temp_user_list_NAME_FK_C FOREIGN KEY (Name) REFERENCES user_list(user_name);
+INSERT INTO User_List VALUES('admin', '$2y$10$RIJ3jB4WTAAKHibR61Qf3.SlOTU9s3AuO5MSS79FP7VFp1QB78YAG', NULL);
 
---Bonus user for testing for email func:
-INSERT INTO User_List VALUES('Ryguy642', 'F0X3SrC%L', 'rkbrennan369@gmail.com');
+ALTER TABLE calendar_events_temp 
+ADD CONSTRAINT calendar_events_temp_user_list_NAME_FK_C 
+FOREIGN KEY (Name) REFERENCES user_list(User_Name);
