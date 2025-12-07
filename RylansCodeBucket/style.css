@@ -7,23 +7,23 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #FFF8F0; /* Cream color */
+    background-color: #FFF8F0; 
     color: #333;
     line-height: 1.6;
     padding: 20px;
     min-height: 100vh;
 }
 
-/* Container for centering content */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Headings */
+
 h1, h2, h3, h4 {
-    color: #8B4513; /* SaddleBrown */
+    color: #8B4513; 
     margin-bottom: 15px;
     padding-bottom: 5px;
     border-bottom: 2px solid #E6D5B8;
@@ -37,11 +37,11 @@ h2 {
     font-size: 1.8rem;
 }
 
-/* Forms */
+
 form {
     background-color: #FFFEF9;
     padding: 25px;
-    border-radius: 15px; /* Rounded edges */
+    border-radius: 15px; 
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
     margin: 20px 0;
     border: 1px solid #E6D5B8;
@@ -56,7 +56,7 @@ input[type="datetime-local"] {
     padding: 12px;
     margin: 8px 0 20px 0;
     border: 2px solid #E6D5B8;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px; 
     background-color: #FFFEF9;
     font-size: 16px;
     transition: border-color 0.3s;
@@ -71,13 +71,13 @@ input[type="datetime-local"]:focus {
     border-color: #8B4513;
 }
 
-/* Buttons */
+
 button, .btn {
-    background-color: #8B4513; /* SaddleBrown */
+    background-color: #8B4513; 
     color: white;
     padding: 12px 25px;
     border: none;
-    border-radius: 25px; /* Rounded edges */
+    border-radius: 25px; 
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -87,19 +87,19 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-    background-color: #A0522D; /* Sienna */
+    background-color: #A0522D; 
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(139, 69, 19, 0.2);
 }
 
-/* Tables */
+
 table {
     background-color: #FFFEF9;
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
     margin: 20px 0;
-    border-radius: 15px; /* Rounded edges */
+    border-radius: 15px; 
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
     border: 1px solid #E6D5B8;
@@ -128,7 +128,7 @@ tr:hover td {
     background-color: #F9F5EF;
 }
 
-/* Links */
+
 a {
     color: #8B4513;
     text-decoration: none;
@@ -142,11 +142,11 @@ a:hover {
     background-color: #F9F5EF;
 }
 
-/* Navigation */
+
 .nav-links {
     background-color: #FFFEF9;
     padding: 15px;
-    border-radius: 15px; /* Rounded edges */
+    border-radius: 15px; 
     margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
@@ -158,7 +158,7 @@ a:hover {
 .nav-links a {
     padding: 8px 15px;
     background-color: #F5EBD8;
-    border-radius: 20px; /* Rounded edges */
+    border-radius: 20px; 
 }
 
 .nav-links a:hover {
@@ -166,7 +166,7 @@ a:hover {
     color: white;
 }
 
-/* Messages */
+
 .success-message {
     background-color: #E8F5E9;
     color: #2E7D32;
@@ -185,17 +185,17 @@ a:hover {
     border-left: 5px solid #F44336;
 }
 
-/* Cards */
+
 .card {
     background-color: #FFFEF9;
     padding: 20px;
-    border-radius: 15px; /* Rounded edges */
+    border-radius: 15px; 
     margin: 20px 0;
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
     border: 1px solid #E6D5B8;
 }
 
-/* Room display */
+
 .room-display, .price-display {
     background-color: #F5EBD8;
     padding: 15px;
@@ -204,7 +204,7 @@ a:hover {
     border: 2px dashed #E6D5B8;
 }
 
-/* Footer */
+
 footer {
     text-align: center;
     margin-top: 30px;
@@ -214,7 +214,7 @@ footer {
     border-top: 1px solid #E6D5B8;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     body {
         padding: 10px;
